@@ -20,7 +20,19 @@ Aplikasi web interaktif Augmented Reality (AR) berbasis AI yang mendeteksi perge
 
 ---
 
-## 🛠️ Menjalankan dengan Python (Lokal)
+## ⚡ Jalankan Instan dengan Docker (Tanpa Clone Repo)
+
+Jika Anda sudah menginstal Docker, Anda bisa langsung menjalankan aplikasi ini tanpa perlu clone repository atau menginstal Python:
+
+```bash
+docker run -d -p 5000:5000 --name ar_hand_app cakra135/ar-hand-app:latest
+```
+
+Buka peramban (browser) di **`http://localhost:5000`** dan izinkan akses webcam.
+
+---
+
+## 🛠️ Menjalankan dari Source Code (Lokal)
 
 1. **Clone repositori ini:**
    ```bash
@@ -54,7 +66,7 @@ Aplikasi web interaktif Augmented Reality (AR) berbasis AI yang mendeteksi perge
 
 ---
 
-## 🐳 Menjalankan dengan Docker
+## 🐳 Menjalankan dengan Docker (Dari Source Code)
 
 ### Opsi 1: Menggunakan Docker Compose (Direkomendasikan)
 ```bash
@@ -65,22 +77,18 @@ docker compose up --build -d
 docker compose down
 ```
 
-### Opsi 2: Menggunakan Docker CLI Standar
+### Opsi 2: Build Manual dengan Docker CLI
 ```bash
-# 1. Build Docker image
-docker build -t ar-hand-app .
+# 1. Build Docker image lokal
+docker build -t cakra135/ar-hand-app:latest .
 
-# 2. Jalankan container dengan port forwarding dan volume snapshot
+# 2. Jalankan container dengan volume snapshot
 docker run -d \
   -p 5000:5000 \
   -v ${PWD}/static/snapshots:/app/static/snapshots \
   --name ar_hand_app \
-  ar-hand-app
+  cakra135/ar-hand-app:latest
 ```
-
-Buka browser dan akses **`http://localhost:5000`** atau **`http://127.0.0.1:5000`**.
-
-> **Catatan:** Izinkan akses webcam pada browser saat diminta.
 
 ---
 
