@@ -4,6 +4,12 @@ Aplikasi web interaktif Augmented Reality (AR) berbasis AI yang mendeteksi perge
 
 ---
 
+## 📸 Preview / Screenshot
+
+![App Screenshot](image.png)
+
+---
+
 ## ✨ Fitur Utama
 - **Real-Time Hand Tracking:** Menggunakan Google MediaPipe Hands langsung di browser via WebGL & Canvas.
 - **Interaksi Sentuh (Touch Interaction):** Sentuh kotak teks virtual dengan jari telunjuk untuk mengubah warnanya secara dinamis.
@@ -18,7 +24,7 @@ Aplikasi web interaktif Augmented Reality (AR) berbasis AI yang mendeteksi perge
 
 1. **Clone repositori ini:**
    ```bash
-   git clone https://github.com/username/ar_hand_color_change.git
+   git clone https://github.com/kang-cakra/ar_hand_color_change.git
    cd ar_hand_color_change
    ```
 
@@ -67,6 +73,7 @@ ar_hand_color_change/
 ├── templates/
 │   └── index.html             # Antarmuka utama aplikasi
 ├── app.py                     # Backend server Flask
+├── image.png                  # Screenshot demo aplikasi
 ├── pyrightconfig.json         # Konfigurasi linter
 ├── requirements.txt           # Dependensi Python
 └── README.md
