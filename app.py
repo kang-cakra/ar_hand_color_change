@@ -52,8 +52,11 @@ def save_snapshot():
 
 
 if __name__ == '__main__':
+    host = os.environ.get('FLASK_HOST', '0.0.0.0')
+    port = int(os.environ.get('FLASK_PORT', 5000))
+    debug = os.environ.get('FLASK_DEBUG', 'true').lower() in ['true', '1']
     print("=" * 60)
     print("🚀 AR Hand Interactive Web App")
-    print("Server berjalan di: http://127.0.0.1:5000")
+    print(f"Server berjalan di: http://{host if host != '0.0.0.0' else '127.0.0.1'}:{port}")
     print("=" * 60)
-    app.run(debug=True)
+    app.run(host=host, port=port, debug=debug)

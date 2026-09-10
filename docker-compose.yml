@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  ar-hand-app:
+    build: .
+    container_name: ar_hand_color_changer
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_HOST=0.0.0.0
+      - FLASK_PORT=5000
+      - FLASK_DEBUG=false
+    volumes:
+      # Volume mount agar snapshot yang disimpan tetap tersimpan di host
+      - ./static/snapshots:/app/static/snapshots

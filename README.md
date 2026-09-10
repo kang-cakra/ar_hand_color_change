@@ -20,7 +20,7 @@ Aplikasi web interaktif Augmented Reality (AR) berbasis AI yang mendeteksi perge
 
 ---
 
-## 🛠️ Prasyarat & Instalasi
+## 🛠️ Menjalankan dengan Python (Lokal)
 
 1. **Clone repositori ini:**
    ```bash
@@ -42,21 +42,45 @@ Aplikasi web interaktif Augmented Reality (AR) berbasis AI yang mendeteksi perge
    pip install -r requirements.txt
    ```
 
+4. **Jalankan server Flask:**
+   ```bash
+   python app.py
+   ```
+
+5. **Akses aplikasi di browser:**
+   ```
+   http://127.0.0.1:5000
+   ```
+
 ---
 
-## 🚀 Menjalankan Aplikasi
+## 🐳 Menjalankan dengan Docker
 
-Jalankan server Flask:
+### Opsi 1: Menggunakan Docker Compose (Direkomendasikan)
 ```bash
-python app.py
+# Build dan jalankan container
+docker compose up --build -d
+
+# Untuk menghentikan container
+docker compose down
 ```
 
-Buka browser dan akses:
-```
-http://127.0.0.1:5000
+### Opsi 2: Menggunakan Docker CLI Standar
+```bash
+# 1. Build Docker image
+docker build -t ar-hand-app .
+
+# 2. Jalankan container dengan port forwarding dan volume snapshot
+docker run -d \
+  -p 5000:5000 \
+  -v ${PWD}/static/snapshots:/app/static/snapshots \
+  --name ar_hand_app \
+  ar-hand-app
 ```
 
-> **Catatan:** Izinkan akses webcam pada peramban/browser saat diminta.
+Buka browser dan akses **`http://localhost:5000`** atau **`http://127.0.0.1:5000`**.
+
+> **Catatan:** Izinkan akses webcam pada browser saat diminta.
 
 ---
 
@@ -72,7 +96,11 @@ ar_hand_color_change/
 │   └── snapshots/             # Penyimpanan lokal hasil tangkapan AR
 ├── templates/
 │   └── index.html             # Antarmuka utama aplikasi
+├── .dockerignore              # Pengecualian file saat build Docker
+├── .gitignore                 # Pengecualian git
 ├── app.py                     # Backend server Flask
+├── docker-compose.yml         # Konfigurasi Docker Compose
+├── Dockerfile                 # Blueprint Docker Image
 ├── image.png                  # Screenshot demo aplikasi
 ├── pyrightconfig.json         # Konfigurasi linter
 ├── requirements.txt           # Dependensi Python
