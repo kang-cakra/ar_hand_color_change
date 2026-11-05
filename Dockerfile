@@ -11,11 +11,15 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     FLASK_PORT=5000 \
     FLASK_DEBUG=false
 
+# Update & upgrade paket Alpine untuk menambal kerentanan OS (seperti zlib)
+RUN apk update && apk upgrade --no-cache
+
 # Salin file requirements terlebih dahulu untuk memanfaatkan caching Docker layer
 COPY requirements.txt .
 
-# Install dependensi Python
-RUN pip install --no-cache-dir -r requirements.txt
+# Install & upgrade dependensi Python
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
 # Salin seluruh kode aplikasi ke dalam container
 COPY . .
